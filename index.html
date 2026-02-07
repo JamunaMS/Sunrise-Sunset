@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Nature Scene</title>
+
+<style>
+body{
+    margin:0;
+    overflow:hidden;
+    font-family:Arial, sans-serif;
+}
+
+/* SKY */
+.sky{
+    width:100%;
+    height:100vh;
+    position:relative;
+    animation: skychange 12s linear infinite;
+}
+
+/* SUN */
+.sun{
+    width:220px;
+    height:220px;
+    background: radial-gradient(circle, #ffd700, #ff8c00);
+    border-radius:50%;
+    position:absolute;
+    left:50%;
+    bottom:-120px;
+    transform:translateX(-50%);
+    animation:sunmove 12s linear infinite;
+    box-shadow:0 0 60px rgba(255,165,0,0.6);
+    transition:transform 0.3s, box-shadow 0.3s;
+}
+
+.sun:hover{
+    transform:translateX(-50%) scale(1.1);
+    box-shadow:0 0 90px yellow;
+}
+
+/* CLOUDS */
+.cloud{
+    position:absolute;
+    background:#9a8d8d;
+    border-radius:50px;
+    opacity:0.9;
+}
+
+.cloud::before,
+.cloud::after{
+    content:"";
+    position:absolute;
+    background:#b2a9a9;
+    border-radius:50%;
+}
+
+.cloud1{
+    width:120px;
+    height:60px;
+    top:80px;
+    left:-150px;
+    animation: cloudMove 30s linear infinite;
+}
+
+.cloud1::before{
+    width:70px;height:70px;top:-30px;left:10px;
+}
+
+.cloud1::after{
+    width:90px;height:90px;top:-40px;right:15px;
+}
+
+.cloud2{
+    width:160px;
+    height:70px;
+    top:140px;
+    left:-200px;
+    animation: cloudMove 40s linear infinite;
+}
+
+.cloud2::before{
+    width:80px;height:80px;top:-35px;left:20px;
+}
+
+.cloud2::after{
+    width:100px;height:100px;top:-45px;right:20px;
+}
+
+/* BIRDS */
+.bird{
+    position:absolute;
+    width:20px;
+    height:20px;
+    border-top:3px solid black;
+    border-radius:50%;
+    animation: fly 12s linear infinite;
+}
+
+.bird::after{
+    content:"";
+    position:absolute;
+    width:20px;
+    height:20px;
+    border-top:3px solid black;
+    border-radius:50%;
+    left:10px;
+}
+
+.bird1{ top:120px; left:-50px; animation-delay:0s;}
+.bird2{ top:160px; left:-80px; animation-delay:3s;}
+.bird3{ top:100px; left:-120px; animation-delay:6s;}
+
+/* GROUND */
+.ground{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:160px;
+    background: linear-gradient(to top, #145a32, #1e8449);
+    border-top-left-radius:50% 40px;
+    border-top-right-radius:50% 40px;
+}
+
+/* ANIMATIONS */
+@keyframes sunmove{
+    0%{bottom:-120px;}
+    25%{bottom:180px;}
+    50%{bottom:360px;}
+    75%{bottom:180px;}
+    100%{bottom:-120px;}
+}
+
+@keyframes skychange{
+    0%{background:#020024;}
+    25%{background:#87ceeb;}
+    50%{background:#87cefa;}
+    75%{background:#ff9966;}
+    100%{background:#020024;}
+}
+
+@keyframes cloudMove{
+    from{transform:translateX(0);}
+    to{transform:translateX(120vw);}
+}
+
+@keyframes fly{
+    from{transform:translateX(0);}
+    to{transform:translateX(120vw);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="sky">
+    <div class="sun"></div>
+
+    <!-- Clouds -->
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+
+    <!-- Birds -->
+    <div class="bird bird1"></div>
+    <div class="bird bird2"></div>
+    <div class="bird bird3"></div>
+
+    <div class="ground"></div>
+</div>
+
+</body>
+</html>
